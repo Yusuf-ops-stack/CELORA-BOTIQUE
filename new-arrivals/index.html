@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celora | Deals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #F9F3EE;
+  color: #444;
+}
+
+/* HEADER */
+header {
+  background: #E8AEB7;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin: 0;
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.back-button:hover {
+  color: #FFD700;
+}
+
+/* CONTENT */
+.main-content {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #C97B84;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: #E8AEB7;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="back-button" onclick="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <h1>Celora New Arrivals</h1>
+</header>
+
+<div class="main-content">
+  <h2>Fresh Styles, Just Arrived</h2>
+  <p>Explore our latest Celora collection — new pieces designed for your unique style. Stay ahead of trends and refresh your wardrobe with our newest arrivals.</p>
+</div>
+
+<footer>
+  © 2026 Celora | All Rights Reserved
+</footer>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+</body>
+</html>

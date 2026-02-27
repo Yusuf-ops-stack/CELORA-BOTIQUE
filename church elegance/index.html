@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celora | Church Elegance</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #F9F3EE;
+  color: #444;
+}
+
+/* HEADER */
+header {
+  background: #E8AEB7;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin: 0;
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.back-button:hover {
+  color: #FFD700;
+}
+
+/* PRODUCT SECTION */
+.product-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.product-image {
+  flex: 1 1 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-image:hover img {
+  transform: scale(1.05);
+}
+
+.product-details {
+  flex: 1 1 400px;
+}
+
+.product-details h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #C97B84;
+  margin-bottom: 15px;
+}
+
+.product-details p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-details .price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #C97B84;
+  margin-bottom: 20px;
+}
+
+.product-details button {
+  padding: 12px 25px;
+  border: none;
+  background: #C97B84;
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product-details button:hover {
+  background: #E8406D;
+}
+
+/* FOOTER */
+footer {
+  background: #E8AEB7;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="back-button" onclick="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <h1>Church Elegance</h1>
+</header>
+
+<div class="product-container">
+  <!-- Product Image -->
+  <div class="product-image">
+    <img src="https://picsum.photos/500/600?1" alt="Church Elegance">
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-details">
+    <h2>Church Elegance</h2>
+    <p>Step into elegance with our Church Elegance collection. Soft fabrics, delicate cuts, and dreamy patterns designed for every special occasion. Perfect for Sunday gatherings, weddings, or any event where you want to shine.</p>
+    <p class="price">$120</p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<footer>
+  © 2026 Celora | All Rights Reserved
+</footer>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+
+function addToCart() {
+  alert('Church Elegance added to cart!');
+}
+</script>
+
+</body>
+</html>

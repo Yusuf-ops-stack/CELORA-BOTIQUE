@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celora | Deals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* BASE */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #FAF8F5;
+  color: #333;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #E8AEB7, #F6D1D6);
+  padding: 25px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.back-button:hover {
+  color: #FFD700;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* MAIN CONTENT */
+.main-content {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.main-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #C97B84;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.main-content h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #C97B84, #E8AEB7);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.main-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* BUTTON-LIKE DEALS CTA */
+.deals-cta {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #E8AEB7, #F6D1D6);
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(232,174,183,0.4);
+}
+
+.deals-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(232,174,183,0.5);
+}
+
+/* FOOTER */
+footer {
+  background: linear-gradient(135deg, #E8AEB7, #F6D1D6);
+  padding: 25px 20px;
+  text-align: center;
+  color: white;
+  margin-top: 50px;
+  font-size: 15px;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="back-button" onclick="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <h1>Celora Deals</h1>
+</header>
+
+<div class="main-content">
+  <h2>Special Deals Just for You</h2>
+  <p>Discover amazing discounts on our most popular collections. Celora brings you the best deals on elegant, dreamy pieces for your everyday style.</p>
+  <p>Check back regularly — our deals update weekly!</p>
+  <a href="#" class="deals-cta">Shop Now</a>
+</div>
+
+<footer>
+  © 2026 Celora | All Rights Reserved
+</footer>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+</body>
+</html>
