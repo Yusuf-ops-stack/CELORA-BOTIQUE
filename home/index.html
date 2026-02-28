@@ -322,6 +322,73 @@ footer {
   font-weight: bold;
   transition: width 0.1s ease;
 }
+#updatePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeInPopup 0.4s ease;
+}
+
+.update-box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.progress-container {
+  background: #eee;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 20px;
+  width: 0%;
+  background: linear-gradient(90deg, #C97B84, #B8905A);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  transition: width 0.2s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes fadeInPopup {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.version-badge {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(201, 123, 132, 0.1);
+  color: #C97B84;
+  border: 1px solid rgba(201, 123, 132, 0.3);
+  transition: 0.3s ease;
+}
+
+.version-badge.updated {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
 
 </style>
 </head>
@@ -356,10 +423,31 @@ footer {
   <h1>Celora</h1>
   <div class="tagline">style with lyn</div>
 
-  <div class="header-buttons">
-    <i class="fas fa-heart" title="Wishlist" onclick="goTo('/whishlist/index.html')"></i>
-    <i class="fas fa-shopping-cart" title="Cart" onclick="goTo('/cart/index.html')"></i>
+<div class="header-buttons">
+ <i class="fa-solid fa-clipboard-list wishlist-icon" title="Wishlist" onclick="goTo('/whishlist/index.html')"></i>
+
+  <div class="cart-icon" onclick="goTo('/cart/index.html')" style="position: relative; cursor: pointer;">
+    <i class="fas fa-shopping-cart" title="Cart" style="font-size:24px;"></i>
+    <span id="cart-count-badge" style="
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #b76e79;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    ">0</span>
   </div>
+</div>
+
+
 </header>
 
 <!-- SIDEBAR & OVERLAY -->
@@ -379,16 +467,17 @@ footer {
   <div class="sidebar-content">
     <h3>Menu</h3>
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="categories.html"><i class="fas fa-th-large"></i> Categories</a>
+    <a href="/home/index.html"><i class="fas fa-th-large"></i> Categories</a>
     
     <h4>Shop</h4>
-    <a href="/whishlist/index.html"><i class="fas fa-heart"></i> Wishlist</a>
-    <a href="/favorites.html"><i class="fas fa-star"></i> Favorites</a>
+    <a href="/whishlist/index.html"><i class="fa-solid fa-clipboard-list wishlist-icon"></i> Wishlist</a>
+    <a href="/favorites/index.html"><i class="fas fa-heart"></i> Favorites</a>
     <a href="/new-arrivals/index.html"><i class="fas fa-bolt"></i> New Arrivals</a>
     <a href="/deals/index.html"><i class="fas fa-tags"></i> Deals</a>
-
     <a href="/cart/index.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="/about/index.html"><i class="fas fa-info-circle"></i> About</a>
     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    
   </div>
 </div>
 <section class="hero">
@@ -397,28 +486,28 @@ footer {
 </section>
 <section class="categories">
   <div class="category-card" onclick="goTo('/church elegance/index.html')">
-    <img src="/favico.ico">
+    <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.28.jpeg">
     <div class="category-overlay">
       <h3>Church Elegance</h3>
     </div>
   </div>
 
   <div class="category-card" onclick="goTo('brunch.html')">
-    <img src="/favico.ico">
+    <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.28 (2).jpeg">
     <div class="category-overlay">
       <h3>Brunch Chic</h3>
     </div>
   </div>
 
   <div class="category-card" onclick="goTo('floral.html')">
-    <img src="/favico.ico">
+    <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.30 (3).jpeg">
     <div class="category-overlay">
       <h3>Floral Dreams</h3>
     </div>
   </div>
 
   <div class="category-card" onclick="goTo('lounge.html')">
-    <img src="/favico.ico">
+    <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.30.jpeg">
     <div class="category-overlay">
       <h3>Soft Lounge</h3>
     </div>
@@ -426,8 +515,12 @@ footer {
 </section>
 
 <footer>
-  © 2026 Celora | All Rights Reserved
+  © 2026 Celora. All Rights Reserved.
+  <div class="version-badge" id="versionBadge">
+    Version <span id="appVersionText"></span>
+  </div>
 </footer>
+
 
 <script>
 function goTo(page) {
@@ -452,7 +545,7 @@ function toggleSidebar() {
 </script>
 <script>
 // 🔥 CHANGE THIS NUMBER EVERY TIME YOU UPDATE YOUR APP
-const APP_VERSION = "1.0.7";
+const APP_VERSION = "1.0.5";
 
 // Immediately check for success popup on page load
 checkImmediateUpdate();
@@ -461,18 +554,26 @@ checkImmediateUpdate();
 function checkAppVersion() {
   const savedVersion = localStorage.getItem("app_version");
 
-  // If version changed while user is on the site → show refresh popup after 15 seconds
+  // FIRST VISIT → just store version
+  if (!savedVersion) {
+    localStorage.setItem("app_version", APP_VERSION);
+    return;
+  }
+
+  // Version changed while user is on site
   if (savedVersion !== APP_VERSION && !document.getElementById("updatePopup")) {
     setTimeout(() => {
       if (!document.getElementById("updatePopup")) {
         showRefreshPopup();
       }
-    }, 15000); // 15s delay
+    }, 15000);
   }
 }
 
+
 // Run version check every 15 seconds for real-time updates
-setInterval(checkAppVersion, 15000);
+setTimeout(checkAppVersion, 15000);
+
 
 // FIRST POPUP (Ask to Refresh)
 function showRefreshPopup() {
@@ -554,10 +655,43 @@ function checkImmediateUpdate() {
     showSuccessPopup();
     localStorage.removeItem("just_updated");
   }
+const badge = document.getElementById("versionBadge");
+if (badge) {
+  badge.classList.add("updated");
+}
+setTimeout(() => {
+  if (badge) badge.classList.remove("updated");
+}, 5000);
 
   // Also check version immediately for in-page updates (will delay refresh popup)
   checkAppVersion();
 }
+// Display version in footer
+function displayVersion() {
+  const versionText = document.getElementById("appVersionText");
+  if (versionText) {
+    versionText.textContent = APP_VERSION;
+  }
+}
+displayVersion();
+// Function to update the cart count from localStorage
+// Update the cart count badge
+function updateCartCountBadge() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-count-badge');
+  if (badge) {
+    badge.textContent = totalQty;
+    // Optional: simple pulse animation on change
+    badge.style.transform = 'scale(1.3)';
+    setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+  }
+}
+
+// Run on page load
+window.onload = () => {
+  updateCartCountBadge();
+};
 </script>
 
 </body>
