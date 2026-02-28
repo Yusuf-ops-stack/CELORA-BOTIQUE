@@ -2,308 +2,190 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/touch.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Celora | Shop</title>
-
+<title>Celora | style lyn</title>
+<link rel="stylesheet" href="/touch.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+
+/* ================= LOADER ================= */
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #F9F3EE, #E8AEB7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  color: #C97B84;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 2s infinite;
+}
+
+.loading-text {
+  margin-top: 15px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #B8905A;
+}
+
+/* ================= INTRO PAGE ================= */
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #F9F3EE;
-  color: #444;
-}
-
-/* HEADER */
-header {
-  background: #E8AEB7;
-  padding: 20px 60px; /* leave space for sidebar and buttons */
   text-align: center;
-  color: white;
-  position: relative;
-
+  background: linear-gradient(to bottom, #F9F3EE, #ffffff);
 }
 
-header h1 {
+.intro {
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 2s ease forwards;
+  padding: 20px;
+}
+
+/* LOGO IMAGE */
+.logo-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* TEXT LOGO */
+.logo {
   font-family: 'Playfair Display', serif;
-  font-size: 40px;
+  font-size: 70px;
+  color: #C97B84;
+  position: relative;
+  overflow: hidden;
   margin: 0;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 3s infinite;
 }
 
 .tagline {
-  font-size: 14px;
-  letter-spacing: 3px;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: #B8905A;
+  margin: 15px 0 30px;
 }
 
-/* CART & WISHLIST BUTTONS */
-.header-buttons {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 15px;
+.message {
+  font-size: 18px;
+  max-width: 420px;
+  margin-bottom: 40px;
+  color: #555;
+  line-height: 1.6;
 }
 
-.header-buttons i {
-  font-size: 24px;
+.btn {
+  background: #C97B84;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
   cursor: pointer;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.header-buttons i:hover {
-  color: #FFD700; /* gold hover effect */
-}
-
-/* SIDEBAR TOGGLE */
-.sidebar-toggle {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.sidebar-toggle:hover {
-  color: #FFD700;
-}
-
-/* SIDEBAR */
-/* SIDEBAR */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -100%;        /* completely offscreen */
-  width: 250px;
-  height: 100%;
-  background: #C97B84; 
-  padding: 60px 20px;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-  transition: left 0.3s ease; /* smooth slide */
-  z-index: 9999;
-  overflow-y: auto;   /* scroll if content exceeds height */
-}
-
-.sidebar.active {
-  left: 0; /* slide in when active */
-}
-
-
-.sidebar h3 {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.sidebar a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin: 15px 0;
   font-weight: 500;
-}
-
-.sidebar a:hover {
-  text-decoration: underline;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  color: #C97B84;
-}
-
-.hero p {
-  max-width: 500px;
-  margin: 15px auto;
-}
-
-/* CATEGORY GRID */
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 40px;
-}
-
-/* CATEGORY CARD */
-.category-card {
-  position: relative;
-  height: 300px;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
+  transition: 0.3s ease;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: 0.4s ease;
 }
 
-.category-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.4s ease;
+.btn:hover {
+  background: #B8905A;
+  transform: scale(1.07);
 }
 
-.category-card:hover img {
-  transform: scale(1.1);
+/* ANIMATIONS */
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
-.category-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-  color: white;
-  padding: 20px;
-  text-align: left;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.category-overlay h3 {
-  margin: 0;
-  font-size: 22px;
-}
-
-/* FOOTER */
-footer {
-  background: #E8AEB7;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  margin-top: 40px;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 @keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
-/* Close icon inside sidebar */
-.sidebar-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  transition: 0.3s ease;
+#introContent {
+  display: none;
 }
-
-.sidebar-close:hover {
-  color: #FFD700; /* gold on hover */
-}
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 260px;
-  height: 100%;
-  background: #F9F3EE;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-  padding-top: 60px;      /* space for close button */
-  transition: left 0.35s ease;
-  z-index: 9999;
-  overflow-y: auto;        /* sidebar itself scrolls */
-}
-
-/* Scrollable content inside sidebar */
-.sidebar-content {
-  padding: 0 20px;          /* just padding for links */
-}
-
-/* Optional: smooth scroll for mobile */
-.sidebar-content {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Scrollbar styling */
-.sidebar-content::-webkit-scrollbar {
-  width: 6px;
-}
-.sidebar-content::-webkit-scrollbar-thumb {
-  background: #C97B84;
-  border-radius: 3px;
-}
-.sidebar-content::-webkit-scrollbar-track {
-  background: #F9F3EE;
-}
-
-/* Sidebar Active */
-.sidebar.active {
-  left: 0;
-}
-
-/* Overlay Active */
-#overlay.active {
-  display: block;
-  opacity: 1;
-}
-
-/* Sidebar Links */
-.sidebar h3, .sidebar h4 {
-  font-family: 'Playfair Display', serif;
-  color: #C97B84;
-  margin: 20px 0 10px 0;
-}
-.sidebar h4 {
-  font-size: 18px;
-}
-
-.sidebar a {
-  display: flex;
-  align-items: center;
-  font-size: 17px;
-  color: #444;
-  text-decoration: none;
-  padding: 12px 0;
-  border-radius: 10px;
-  transition: 0.3s ease;
-}
-
-.sidebar a i {
-  margin-right: 15px;
-  font-size: 18px;
-  color: #C97B84;
-  transition: 0.3s ease;
-}
-
-.sidebar a:hover {
-  background: #E8AEB7;
-  color: white;
-}
-
-.sidebar a:hover i {
-  color: white;
-}
-
-/* Close button */
-.sidebar-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #C97B84;
-  transition: 0.3s ease;
-}
-
-.sidebar-close:hover {
-  color: #E8AEB7;
-  transform: scale(1.2);
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 </style>
 </head>
 
 <body>
-<!-- Spinner Overlay -->
 <div id="spinner" style="
   display:none;
   position:fixed;
@@ -326,105 +208,56 @@ footer {
   </div>
 </div>
 
-<header>
-  <div class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
-  
-  <h1>Celora</h1>
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-logo">Celora</div>
+  <div class="loading-text">LOADING ELEGANCE...</div>
+</div>
+
+<!-- INTRO CONTENT -->
+<div class="intro" id="introContent">
+
+  <!-- PLACEHOLDER LOGO IMAGE -->
+  <img src="/pics/favico.ico" alt="Celora Logo" class="logo-img">
+
+  <h1 class="logo">Celora</h1>
   <div class="tagline">style with lyn</div>
 
-  <div class="header-buttons">
-    <i class="fas fa-heart" title="Wishlist" onclick="goTo('/whishlist/index.html')"></i>
-    <i class="fas fa-shopping-cart" title="Cart" onclick="goTo('/cart/index.html')"></i>
-  </div>
-</header>
+  <p class="message">
+    Welcome to a world of soft elegance, dreamy dresses,
+    and effortless confidence made just for you 💖
+  </p>
 
-<!-- SIDEBAR & OVERLAY -->
-<div id="overlay" onclick="toggleSidebar()" style="
-  position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 9000;
-  display: none;
-  transition: opacity 0.3s ease;
-"></div>
-
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-close" onclick="toggleSidebar()">
-    <i class="fas fa-times"></i>
-  </div>
-  <div class="sidebar-content">
-    <h3>Menu</h3>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="categories.html"><i class="fas fa-th-large"></i> Categories</a>
-    
-    <h4>Shop</h4>
-    <a href="/whishlist/index.html"><i class="fas fa-heart"></i> Wishlist</a>
-    <a href="/favorites/index.html"><i class="fas fa-star"></i> Favorites</a>
-    <a href="/new-arrivals/index.html"><i class="fas fa-bolt"></i> New Arrivals</a>
-    <a href="/deals/index.html"><i class="fas fa-tags"></i> Deals</a>
-
-    <a href="/cart/index.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-    <a href="/about/index.html"><i class="fas fa-envelope"></i> About</a>
-  </div>
+  <button class="btn" onclick="enterShop()">Shop Now</button>
 </div>
-<section class="hero">
-  <h2>Shop by Category</h2>
-  <p>Choose your vibe and discover soft, dreamy pieces made for your everyday elegance 💖</p>
-</section>
-<section class="categories">
-  <div class="category-card" onclick="goTo('church.html')">
-    <img src="https://picsum.photos/400/500?1">
-    <div class="category-overlay">
-      <h3>Church Elegance</h3>
-    </div>
-  </div>
-
-  <div class="category-card" onclick="goTo('brunch.html')">
-    <img src="https://picsum.photos/400/500?2">
-    <div class="category-overlay">
-      <h3>Brunch Chic</h3>
-    </div>
-  </div>
-
-  <div class="category-card" onclick="goTo('floral.html')">
-    <img src="https://picsum.photos/400/500?3">
-    <div class="category-overlay">
-      <h3>Floral Dreams</h3>
-    </div>
-  </div>
-
-  <div class="category-card" onclick="goTo('lounge.html')">
-    <img src="https://picsum.photos/400/500?4">
-    <div class="category-overlay">
-      <h3>Soft Lounge</h3>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 Celora | All Rights Reserved
-</footer>
 
 <script>
-function goTo(page) {
-  const spinner = document.getElementById('spinner');
-  spinner.style.display = 'flex';
 
-  // Short delay for smooth effect
-  setTimeout(() => {
-    window.location.href = page;
-  }, 600);
+window.onload = function() {
+
+  const loader = document.getElementById("loader");
+  const intro = document.getElementById("introContent");
+
+  setTimeout(function() {
+    loader.style.display = "none";
+    intro.style.display = "flex";
+  }, 2500);
+
+};
+
+
+function enterShop() {
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = "flex";
+
+  setTimeout(function() {
+    window.location.href = "/home/index.html";
+  }, 800);
 }
 
-
-// Toggle sidebar and overlay
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-  sidebar.classList.toggle('active');
-  overlay.classList.toggle('active');
-}
 </script>
+
+
 
 </body>
 </html>

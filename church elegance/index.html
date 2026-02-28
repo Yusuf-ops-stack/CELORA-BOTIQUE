@@ -2,164 +2,316 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/touch.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Celora | Church Elegance</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Celora | Sundress Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <style>
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #F9F3EE;
-  color: #444;
-}
-
-/* HEADER */
+   margin:0; 
+   font-family:'Poppins',sans-serif; 
+   background:#fffaf7; 
+   color:#333;
+   }
 header {
-  background: #E8AEB7;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  position: relative;
+   background:#f8e8e1; 
+   padding:20px 5%; 
+   text-align:center; 
+   position:relative;
+   }
+.header-container { 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
 }
-
 header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  margin: 0;
+   font-family:'Playfair Display',serif; 
+   margin:0; 
+   font-size:32px;
+   }
+.back-btn { 
+  position:absolute; 
+  left:20px; top:20px; 
+  background:white; 
+  border:1px solid #e5cfc7; 
+  width:40px; 
+  height:40px; 
+  border-radius:50%; 
+  cursor:pointer; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  transition:0.3s ease; 
 }
+.back-btn:hover {
+   background:#b76e79; 
+   color:white; 
+   transform:translateX(-4px);
+   }
 
-.back-button {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  transition: 0.3s ease;
-}
+/* Cart Icon */
+.cart-icon { 
+  position:absolute; 
+  right:20px; 
+  top:20px; 
+  cursor:pointer; 
+  font-size:24px; 
+  color:#333;
+ }
+.cart-icon #cart-count { 
+  position:absolute; 
+  top:-8px; 
+  right:-8px; 
+  background:#b76e79; 
+  color:white; 
+  font-size:12px; 
+  font-weight:bold; 
+  width:18px; 
+  height:18px; 
+  border-radius:50%; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  transition: transform 0.2s ease;
+ }
 
-.back-button:hover {
-  color: #FFD700;
+.collection-title {
+  text-align:center;
+  margin:40px 0 10px; 
+  font-size:26px; 
+  font-family:'Playfair Display',serif; 
 }
-
-/* PRODUCT SECTION */
-.product-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+.collection-sub {
+   text-align:center; 
+   color:#777; 
+   margin-bottom:40px; 
+  }
+.products {
+   display:grid; 
+   grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); 
+   gap:30px; 
+   padding:0 5% 60px; 
+  }
+.product-card { background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.06); transition:0.3s ease; position:relative; }
+.product-card:hover { transform:translateY(-8px); }
+.product-image { position:relative; overflow:hidden; }
+.product-image img { width:100%; height:320px; object-fit:cover; transition:0.4s ease; }
+.product-card:hover img { transform:scale(1.08); }
+.wishlist { position:absolute; top:15px; right:15px; background:white; padding:8px; border-radius:50%; cursor:pointer; font-size:14px; transition:0.3s; }
+.wishlist:hover { background:#f8e8e1; color:#b76e79; }
+.product-info { padding:18px; }
+.product-name { font-weight:500; margin-bottom:8px; }
+.price { color:#b76e79; font-weight:600; margin-bottom:15px; }
+.option-select { width:100%; padding:8px; border-radius:20px; border:1px solid #e5cfc7; margin-bottom:12px; font-family:'Poppins',sans-serif; }
+.quantity-box { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:15px; }
+.quantity-box button { width:30px; height:30px; border:none; border-radius:50%; background:#f8e8e1; cursor:pointer; font-size:16px; transition:0.3s; }
+.quantity-box button:hover { background:#b76e79; color:white; }
+.quantity-box input { width:45px; text-align:center; border:1px solid #e5cfc7; border-radius:10px; padding:4px; }
+.btn-group { display:flex; gap:10px; align-items:center; }
+.purchase-btn { flex:1; padding:10px; border:none; background:#b76e79; color:white; border-radius:25px; cursor:pointer; transition:0.3s; }
+.purchase-btn:hover { background:#a35c66; }
+.share-btn {
+  flex:1; 
+  padding:10px; 
+  border:none; 
+  background:#b76e79; 
+  color:white; 
+  border-radius:25px; 
+  cursor:pointer; 
+  transition:0.3s;
+ }
+.share-btn:hover 
+{ background:#b76e79; 
+  color:white; 
 }
-
-.product-image {
-  flex: 1 1 300px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.product-image:hover img {
-  transform: scale(1.05);
-}
-
-.product-details {
-  flex: 1 1 400px;
-}
-
-.product-details h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  color: #C97B84;
-  margin-bottom: 15px;
-}
-
-.product-details p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.product-details .price {
-  font-size: 24px;
-  font-weight: bold;
-  color: #C97B84;
-  margin-bottom: 20px;
-}
-
-.product-details button {
-  padding: 12px 25px;
-  border: none;
-  background: #C97B84;
-  color: white;
-  font-size: 16px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.product-details button:hover {
-  background: #E8406D;
-}
-
-/* FOOTER */
-footer {
-  background: #E8AEB7;
-  padding: 20px;
-  text-align: center;
-  color: white;
-  margin-top: 40px;
-}
+footer { text-align:center; padding:30px; background:#f8e8e1; font-size:14px; color:#555; }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="back-button" onclick="goBack()">
-    <i class="fas fa-arrow-left"></i>
+  <div class="header-container">
+    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+    <h1>CELORA</h1>
+   <!-- Cart Icon in header -->
+<div class="cart-icon" onclick="goToCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-count">0</span>
+</div>
   </div>
-  <h1>Church Elegance</h1>
 </header>
 
-<div class="product-container">
-  <!-- Product Image -->
-  <div class="product-image">
-    <img src="https://picsum.photos/500/600?1" alt="Church Elegance">
+<h2 class="collection-title">Sundress Collection</h2>
+<p class="collection-sub">Light. Elegant. Effortlessly Beautiful.</p>
+
+<section class="products">
+
+  <!-- Product 1 -->
+  <div class="product-card" data-name="Floral Breeze Sundress" data-price="3200">
+    <div class="product-image">
+      <img src="/favico.ico" alt="Floral Sundress">
+      <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+    </div>
+    <div class="product-info">
+      <div class="product-name">Floral Breeze Sundress</div>
+      <div class="price">KSh 3,200</div>
+      <select class="option-select">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+      </select>
+      <div class="quantity-box">
+        <button onclick="decreaseQty(this)">-</button>
+        <input type="number" class="qty-input" value="1" min="1">
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <div class="btn-group">
+        <button class="purchase-btn buy-now"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+        <button class="purchase-btn cart-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        <button class="share-btn" onclick="shareProduct('Floral Breeze Sundress')"><i class="fas fa-share-alt"></i></button>
+      </div>
+    </div>
   </div>
 
-  <!-- Product Details -->
-  <div class="product-details">
-    <h2>Church Elegance</h2>
-    <p>Step into elegance with our Church Elegance collection. Soft fabrics, delicate cuts, and dreamy patterns designed for every special occasion. Perfect for Sunday gatherings, weddings, or any event where you want to shine.</p>
-    <p class="price">$120</p>
-    <button onclick="addToCart()">Add to Cart</button>
+  <!-- Product 2 -->
+  <div class="product-card" data-name="Lace Grace Sundress" data-price="3800">
+    <div class="product-image">
+      <img src="/favico.ico" alt="White Lace Sundress">
+      <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
+    </div>
+    <div class="product-info">
+      <div class="product-name">Lace Grace Sundress</div>
+      <div class="price">KSh 3,800</div>
+      <select class="option-select">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+      </select>
+      <div class="quantity-box">
+        <button onclick="decreaseQty(this)">-</button>
+        <input type="number" class="qty-input" value="1" min="1">
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <div class="btn-group">
+        <button class="purchase-btn buy-now"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+        <button class="purchase-btn cart-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        <button class="share-btn" onclick="shareProduct('Lace Grace Sundress')"><i class="fas fa-share-alt"></i></button>
+      </div>
+    </div>
   </div>
-</div>
 
-<footer>
-  © 2026 Celora | All Rights Reserved
-</footer>
+</section>
+
+<footer>© 2026 Celora. All Rights Reserved.</footer>
 
 <script>
-function goBack() {
-  window.history.back();
+// Navigation
+function goBack(){window.history.back();}
+
+// Quantity
+function increaseQty(btn){let input=btn.parentElement.querySelector("input"); input.value=parseInt(input.value)+1;}
+function decreaseQty(btn){let input=btn.parentElement.querySelector("input"); if(input.value>1) input.value=parseInt(input.value)-1;}
+
+// Wishlist
+function toggleWishlist(iconDiv){
+  let card = iconDiv.closest(".product-card");
+  let name = card.dataset.name;
+  let wishlist = JSON.parse(localStorage.getItem("celoraWishlist")||"[]");
+  let index = wishlist.findIndex(item=>item.name===name);
+  if(index===-1){ wishlist.push({name}); iconDiv.innerHTML='<i class="fa-solid fa-heart" style="color:#b76e79;"></i>'; }
+  else { wishlist.splice(index,1); iconDiv.innerHTML='<i class="fa-regular fa-heart"></i>'; }
+  localStorage.setItem("celoraWishlist", JSON.stringify(wishlist));
 }
 
-function addToCart() {
-  alert('Church Elegance added to cart!');
+// Share
+function shareProduct(productName){
+  const url=window.location.href;
+  const text=`Check out this beautiful sundress: ${productName} - ${url}`;
+  const whatsappLink=`https://wa.me/?text=${encodeURIComponent(text)}`;
+  const messengerLink=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  const emailLink=`mailto:?subject=${encodeURIComponent('Beautiful Sundress on Celora')}&body=${encodeURIComponent(text)}`;
+
+  const modal=document.createElement('div');
+  modal.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000;";
+  const box=document.createElement('div');
+  box.style.cssText="background:#fff;padding:20px;border-radius:15px;text-align:center;min-width:250px;";
+  box.innerHTML=`
+    <h3>Share ${productName}</h3>
+    <p>Choose a platform:</p>
+    <a href="${whatsappLink}" target="_blank" style="display:block;margin:5px 0;color:#25D366;text-decoration:none;">WhatsApp</a>
+    <a href="${messengerLink}" target="_blank" style="display:block;margin:5px 0;color:#0084FF;text-decoration:none;">Messenger</a>
+    <a href="${emailLink}" target="_blank" style="display:block;margin:5px 0;color:#333;text-decoration:none;">Email</a>
+    <button id="copyLinkBtn" style="margin-top:10px;padding:8px 15px;border:none;background:#b76e79;color:white;border-radius:10px;cursor:pointer;">Copy Link</button>
+    <button id="closeShareBtn" style="margin-top:10px;padding:5px 10px;border:none;background:#ccc;color:#333;border-radius:10px;cursor:pointer;display:block;margin:10px auto 0;">Close</button>
+  `;
+  modal.appendChild(box);
+  document.body.appendChild(modal);
+  document.getElementById('copyLinkBtn').onclick=()=>{navigator.clipboard.writeText(url).then(()=>alert('Link copied!'));};
+  document.getElementById('closeShareBtn').onclick=()=>{document.body.removeChild(modal);};
+}
+
+// Cart badge
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if (badge) badge.textContent = totalQty;
+}
+
+window.onload = () => {
+  updateCartCount();
+};
+
+// Buy Now (WhatsApp)
+document.querySelectorAll('.buy-now').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const productEl = btn.closest('.product-card');
+    const name = productEl.dataset.name;
+    const priceText = productEl.querySelector('.price').textContent;
+    const size = productEl.querySelector('.option-select').value;
+    const qty = parseInt(productEl.querySelector('.qty-input').value);
+    if(!size){ alert('Please select a size.'); return; }
+    const price = parseInt(priceText.replace(/[^0-9]/g,''));
+    let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+    const existingIndex = cart.findIndex(item=>item.name===name && item.size===size);
+    if(existingIndex>-1){ cart[existingIndex].qty+=qty; } else{ cart.push({name, price, size, qty}); }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    const message=`Hi, I want to order ${qty} x ${name} (Size: ${size}). Price: KSh ${price*qty}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+    updateCartCount();
+  });
+});
+
+// Add to Cart
+document.querySelectorAll('.cart-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const productEl = btn.closest('.product-card');
+    const name = productEl.dataset.name;
+    const priceText = productEl.querySelector('.price').textContent;
+    const size = productEl.querySelector('.option-select').value;
+    const qty = parseInt(productEl.querySelector('.quantity-box input').value);
+    if(!size){ alert('Please select a size.'); return; }
+    const price = parseInt(priceText.replace(/[^0-9]/g,''));
+    let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+    const existingIndex = cart.findIndex(item=>item.name===name && item.size===size);
+    if(existingIndex>-1){ cart[existingIndex].qty+=qty; } else{ cart.push({name, price, size, qty}); }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    // Badge animation
+    const badge=document.getElementById('cart-count');
+    badge.style.transform='scale(1.3)';
+    setTimeout(()=>{badge.style.transform='scale(1)';},200);
+    alert(`${qty} x ${name} (Size: ${size}) added to cart!`);
+  });
+});
+function goToCart() {
+  window.location.href = "/cart/index.html"; // <-- updated to your cart page
 }
 </script>
-
 </body>
 </html>
