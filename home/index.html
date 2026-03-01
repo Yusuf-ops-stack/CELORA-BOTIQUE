@@ -552,7 +552,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
+// Always hide spinner when page loads
+window.addEventListener("pageshow", function () {
+  const spinner = document.getElementById("spinner");
+  if (spinner) {
+    spinner.style.display = "none";
+  }
+});
 
 // Toggle sidebar and overlay
 function toggleSidebar() {
@@ -565,7 +571,7 @@ function toggleSidebar() {
 </script>
 <script>
 // 🔥 CHANGE THIS NUMBER EVERY TIME YOU UPDATE YOUR APP
-const APP_VERSION = "1.0.7";
+const APP_VERSION = "1.0.9";
 
 // Immediately check for success popup on page load
 checkImmediateUpdate();
