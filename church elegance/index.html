@@ -284,8 +284,8 @@ footer {
   <!-- Product 1 -->
   <div class="product-card" 
      data-name="Floral Breeze Sundress" 
-     data-price="3200"
-     data-url="https://celora.com/products/floral-breeze-sundress">
+     data-price="3200" 
+     data-url="https://celora-botique.vercel.app/products/floral-breeze-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.30 (1).jpeg" alt="Floral Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -315,7 +315,7 @@ footer {
   <div class="product-card" 
      data-name="Lace Grace Sundress" 
      data-price="3800"
-     data-url="https://celora.com/products/lace-grace-sundress">
+     data-url="https://celora-botique.vercel.app/products/lace-grace-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.28.29 (3).jpeg" alt="White Lace Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -344,7 +344,7 @@ footer {
   <div class="product-card" 
      data-name="Summer Glow Sundress" 
      data-price="3500"
-     data-url="https://celora.com/products/summer-glow-sundress">
+     data-url="https://celora-botique.vercel.app/products/summer-glow-sundress">
   <div class="product-image">
     <img src="/pics/sheath dress.jpeg" alt="Yellow Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -373,7 +373,7 @@ footer {
   <div class="product-card" 
      data-name="Rose Petal Sundress" 
      data-price="3600"
-     data-url="https://celora.com/products/rose-petal-sundress">
+     data-url="https://celora-botique.vercel.app/products/rose-petal-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.32 (2).jpeg" alt="Pink Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -403,7 +403,7 @@ footer {
  <div class="product-card" 
      data-name="Ocean Breeze Sundress" 
      data-price="3900"
-     data-url="https://celora.com/products/ocean-breeze-sundress">
+     data-url="https://celora-botique.vercel.app/products/ocean-breeze-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.33.jpeg" alt="Blue Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -433,7 +433,7 @@ footer {
 <div class="product-card" 
      data-name="Sunset Glow Sundress" 
      data-price="3400"
-     data-url="https://celora.com/products/sunset-glow-sundress">
+     data-url="https://celora-botique.vercel.app/products/sunset-glow-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.59.jpeg" alt="Orange Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -463,7 +463,7 @@ footer {
   <div class="product-card" 
      data-name="Lavender Dreams Sundress" 
      data-price="3700"
-     data-url="https://celora.com/products/lavender-dreams-sundress">
+     data-url="https://celora-botique.vercel.app/products/lavender-dreams-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.32.jpeg" alt="Lavender Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -493,7 +493,7 @@ footer {
   <div class="product-card" 
      data-name="Peach Blossom Sundress" 
      data-price="3300"
-     data-url="https://celora.com/products/peach-blossom-sundress">
+     data-url="https://celora-botique.vercel.app/products/peach-blossom-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.31 (1).jpeg" alt="Peach Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -522,7 +522,7 @@ footer {
   <div class="product-card" 
      data-name="Mint Whisper Sundress" 
      data-price="3600"
-     data-url="https://celora.com/products/mint-whisper-sundress">
+     data-url="https://celora-botique.vercel.app/products/mint-whisper-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.32 (1).jpeg" alt="Mint Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></div>
@@ -552,7 +552,7 @@ footer {
  <div class="product-card" 
      data-name="Golden Hour Sundress" 
      data-price="4000" 
-     data-url="https://celora.com/products/golden-hour-sundress">
+     data-url="https://celora-botique.vercel.app/products/golden-hour-sundress">
   <div class="product-image">
     <img src="/pics/WhatsApp Image 2026-02-28 at 13.54.32 (2).jpeg" alt="Golden Sundress">
     <div class="wishlist" onclick="toggleWishlist(this)">
@@ -661,6 +661,7 @@ window.onload = () => {
 };
 
 // Buy Now (WhatsApp to specific seller with clickable image link)
+// Buy Now - WhatsApp to specific seller with clickable product link
 const sellerNumber = "254768219950"; // replace with actual seller number
 
 document.querySelectorAll('.buy-now').forEach(btn => {
@@ -671,7 +672,7 @@ document.querySelectorAll('.buy-now').forEach(btn => {
     const size = productEl.querySelector('.option-select').value;
     const qty = parseInt(productEl.querySelector('.qty-input').value);
     const imgSrc = productEl.querySelector('img').src; // image URL
-    const productURL = productEl.dataset.url || imgSrc; // actual product URL or fallback to image
+    const productUrl = productEl.dataset.url || imgSrc; // use URL if available, else image
 
     if (!size) {
       alert('Please select a size.');
@@ -680,25 +681,13 @@ document.querySelectorAll('.buy-now').forEach(btn => {
 
     const price = parseInt(priceText.replace(/[^0-9]/g, ''));
     
-    // Optional: Add item to cart storage
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingIndex = cart.findIndex(item => item.name === name && item.size === size);
-    if (existingIndex > -1) {
-      cart[existingIndex].qty += qty;
-    } else {
-      cart.push({ name, price, size, qty, url: productURL, img: imgSrc });
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
+    // Build cheerful WhatsApp message
+    const message = `Hi! 😄 I'd like to order ${qty} x ${name} (Size: ${size}).\n💰 Total: KSh ${price * qty}\n🔗 Check the product here: ${productUrl}\nPlease let me know the payment steps. Thanks! ✨`;
 
-    // Friendly WhatsApp message
-    const message = `Hey Celora! 😊 I’m excited to order:\n\n🌸 ${qty} x ${name} (Size: ${size}) - KSh ${price * qty}\n🔗 View Product: ${productURL}\n\nPlease let me know the next steps for payment. Thank you! 💖`;
-
-    // Open WhatsApp with pre-filled message
+    // Open WhatsApp chat with seller
     window.open(`https://wa.me/${sellerNumber}?text=${encodeURIComponent(message)}`, '_blank');
   });
 });
-
 
 // Add to Cart
 document.querySelectorAll('.cart-btn').forEach(btn => {
