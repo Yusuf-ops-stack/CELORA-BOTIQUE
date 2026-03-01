@@ -354,7 +354,7 @@ footer {
 }
 
 .progress-bar {
-  height: 20px;
+  height: 100%;
   width: 0%;
   background: linear-gradient(90deg, #C97B84, #B8905A);
   color: white;
@@ -654,7 +654,7 @@ function toggleSidebar() {
 </script>
 <script>
 // 🔥 CHANGE THIS NUMBER EVERY TIME YOU UPDATE YOUR APP
-const APP_VERSION = "1.1.1";
+const APP_VERSION = "1.1.5";
 
 // Immediately check for success popup on page load
 checkImmediateUpdate();
@@ -675,7 +675,7 @@ function checkAppVersion() {
       if (!document.getElementById("updatePopup")) {
         showRefreshPopup();
       }
-    }, 15000);
+    }, 5000);
   }
 }
 
