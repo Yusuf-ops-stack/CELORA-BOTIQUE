@@ -105,7 +105,8 @@ header h1 {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 60px 20px;
+  padding: -20px 20px 30px 20px; /* very small top padding */
+  margin-top: 0;
 }
 .hero h2 {
   font-family: 'Playfair Display', serif;
@@ -389,6 +390,77 @@ footer {
   color: #4CAF50;
   border: 1px solid rgba(76, 175, 80, 0.3);
 }
+/* SEARCH SECTION */
+.search-section {
+  padding: 15px 20px 5px 20px; /* reduced bottom space */
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #C97B84;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 20px 14px 45px;
+  border-radius: 30px;
+  border: 1px solid #E8AEB7;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #C97B84;
+  box-shadow: 0 5px 20px rgba(201,123,132,0.2);
+}
+
+/* SEARCH RESULTS DROPDOWN */
+.search-results {
+  position: absolute;
+  top: 55px;
+  width: 100%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: none;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.search-results div {
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-results div:hover {
+  background: #F9F3EE;
+}
+#searchResults {
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  z-index: 1000;
+}
 
 </style>
 </head>
@@ -480,6 +552,15 @@ footer {
     
   </div>
 </div>
+<!-- SEARCH BAR -->
+<section class="search-section">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Uncover your next signature look...">
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</section>
+
 <section class="hero">
   <h2>Shop by Category</h2>
   <p>Choose your vibe and discover soft, dreamy pieces made for your everyday elegance 💖</p>
@@ -571,7 +652,7 @@ function toggleSidebar() {
 </script>
 <script>
 // 🔥 CHANGE THIS NUMBER EVERY TIME YOU UPDATE YOUR APP
-const APP_VERSION = "1.0.10";
+const APP_VERSION = "1.1.0";
 
 // Immediately check for success popup on page load
 checkImmediateUpdate();
@@ -719,6 +800,135 @@ window.onload = () => {
   updateCartCountBadge();
 };
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+
+  // 🔥 Define your real Celora products here
+ const products = [
+  {
+    name: "Floral Breeze Sundress",
+    link: "/church elegance/#floral-breeze-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.28.30 (1).jpeg"
+  },
+  {
+    name: "Lace Grace Sundress",
+    link: "/church elegance/#lace-grace-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.28.29 (3).jpeg"
+  },
+  {
+    name: "Summer Glow Sundress",
+    link: "/church elegance/#summer-glow-sundress",
+    img: "/pics/sheath dress.jpeg"
+  },
+  {
+    name: "Rose Petal Sundress",
+    link: "/churchelegance/#rose-petal-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.32 (2).jpeg"
+  },
+  {
+    name: "Ocean Breeze Sundress",
+    link: "/church elegance/#ocean-breeze-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.33.jpeg"
+  },
+  {
+    name: "Sunset Glow Sundress",
+    link: "/church elegance/#sunset-glow-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.59.jpeg"
+  },
+  {
+    name: "Lavender Dreams Sundress",
+    link: "/church elegance/#lavender-dreams-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.32.jpeg"
+  },
+  {
+    name: "Peach Blossom Sundress",
+    link: "/church elegance/#peach-blossom-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.31 (1).jpeg"
+  },
+  {
+    name: "Mint Whisper Sundress",
+    link: "/church elegance/#mint-whisper-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.32 (1).jpeg"
+  },
+  {
+    name: "Golden Hour Sundress",
+    link: "/church elegance/#golden-hour-sundress",
+    img: "/pics/WhatsApp Image 2026-02-28 at 13.54.32 (2).jpeg"
+  }
+];
+
+  searchInput.addEventListener("input", function () {
+    const value = this.value.toLowerCase().trim();
+    searchResults.innerHTML = "";
+
+    if (!value) {
+      searchResults.style.display = "none";
+      return;
+    }
+
+    const filtered = products.filter(product =>
+      product.name.toLowerCase().includes(value)
+    );
+
+    if (!filtered.length) {
+      searchResults.innerHTML =
+        "<div style='padding:12px;'>No products found 💔</div>";
+    } else {
+      filtered.forEach(product => {
+
+        const div = document.createElement("div");
+        div.style.display = "flex";
+        div.style.alignItems = "center";
+        div.style.padding = "10px";
+        div.style.cursor = "pointer";
+        div.style.borderBottom = "1px solid #eee";
+        div.style.transition = "background 0.2s";
+
+        div.onmouseover = () => div.style.background = "#f9f3ee";
+        div.onmouseout = () => div.style.background = "white";
+
+        div.onclick = () => {
+          window.location.href = product.link;
+        };
+
+        const img = document.createElement("img");
+        img.src = product.img;
+        img.style.width = "45px";
+        img.style.height = "45px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "8px";
+        img.style.marginRight = "12px";
+
+        const regex = new RegExp(`(${value})`, "gi");
+        const highlighted = product.name.replace(
+          regex,
+          "<mark style='background:#ffd700;color:#444;'>$1</mark>"
+        );
+
+        const span = document.createElement("span");
+        span.innerHTML = highlighted;
+
+        div.appendChild(img);
+        div.appendChild(span);
+        searchResults.appendChild(div);
+      });
+    }
+
+    searchResults.style.display = "block";
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".search-box")) {
+      searchResults.style.display = "none";
+    }
+  });
+
+});
+</script>
+
 
 </body>
 </html>
