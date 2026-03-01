@@ -208,6 +208,194 @@ header h1 {
 
 .cancel-btn { background:#E8AEB7; color:white; }
 .confirm-btn { background:#C97B84; color:white; }
+#checkoutModal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+/* FRIEND MODAL */
+#friendModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#friendModal .modal-box {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  animation: slideDown 0.4s ease forwards;
+}
+
+#friendModal h3 {
+  color: #C97B84;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+#friendModal p {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+#friendModal input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+#friendModal input:focus {
+  border-color: #E8AEB7;
+  outline: none;
+  box-shadow: 0 0 10px rgba(232,174,183,0.3);
+}
+
+#friendModal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#friendModal .confirm-btn {
+  background: #C97B84;
+  color: white;
+}
+
+#friendModal .confirm-btn:hover {
+  transform: scale(1.05);
+  background: #b66a73;
+}
+
+#friendModal .cancel-btn {
+  background: #E8AEB7;
+  color: white;
+}
+
+#friendModal .cancel-btn:hover {
+  transform: scale(1.05);
+  background: #d499a5;
+}
+
+/* Animations */
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+/* CHECKOUT / MESSAGE SELLER MODAL */
+#checkoutModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#checkoutModal .modal-box {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  animation: slideDown 0.4s ease forwards;
+}
+
+#checkoutModal h3 {
+  color: #C97B84;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+#checkoutModal p {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#checkoutModal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#checkoutModal .cancel-btn {
+  background: #E8AEB7;
+  color: white;
+}
+
+#checkoutModal .cancel-btn:hover {
+  transform: scale(1.05);
+  background: #d499a5;
+}
+
+#checkoutModal .confirm-btn {
+  background: #C97B84;
+  color: white;
+}
+
+#checkoutModal .confirm-btn:hover {
+  transform: scale(1.05);
+  background: #b66a73;
+}
+
+/* Animations for consistency */
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 </style>
 </head>
@@ -230,6 +418,29 @@ header h1 {
     <p>Are you sure you want to remove this item?</p>
     <button class="cancel-btn" onclick="closeModal()">Cancel</button>
     <button class="confirm-btn" onclick="confirmRemove()">Remove</button>
+  </div>
+</div>
+<!-- Checkout Modal -->
+<div id="checkoutModal">
+  <div class="modal-box">
+    <h3 style="color:#C97B84;">Checkout Options</h3>
+    <p>Who will pay for this order?</p>
+    <button onclick="messageSeller()" class="confirm-btn">
+  I will Pay 💳
+</button>
+    <button class="confirm-btn" onclick="askFriend()">Ask a Friend to Pay</button>
+  </div>
+</div>
+<!-- Ask Friend Modal -->
+<div id="friendModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background: rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:10000;">
+  <div style="background:#fff; padding:25px; border-radius:15px; text-align:center; width:90%; max-width:350px;">
+    <h3 style="color:#C97B84;">Ask a Friend</h3>
+    <p>Enter your friend's WhatsApp number:</p>
+    <input type="text" id="friendNumberInput" value="254" style="width:80%; padding:8px; margin:10px 0; border-radius:8px; border:1px solid #ccc; text-align:center;">
+    <br>
+    <button class="confirm-btn" onclick="sendToFriend()">Send</button>
+    <button class="cancel-btn" onclick="closeFriendModal()">Cancel</button>
   </div>
 </div>
 
@@ -340,9 +551,85 @@ function confirmRemove() {
 }
 
 function checkout() {
-  alert("Proceeding to checkout...");
+  if(cart.length === 0){
+    alert("Your cart is empty!");
+    return;
+  }
+  document.getElementById("checkoutModal").style.display = "flex";
 }
 
+function closeCheckoutModal() {
+  document.getElementById("checkoutModal").style.display = "none";
+}
+
+function askFriend() {
+  closeCheckoutModal();
+  document.getElementById('friendNumberInput').value = '+254'; // prefill with 254
+  document.getElementById('friendModal').style.display = 'flex';
+}
+function sendToFriend() {
+  let friendNumber = document.getElementById('friendNumberInput').value;
+
+  if(!friendNumber){
+    alert("Please enter a number.");
+    return;
+  }
+
+  // Remove non-digit characters just in case
+  friendNumber = friendNumber.replace(/\D/g, '');
+
+  // Seller contact
+  const sellerContact = "254735469540"; // Replace with actual seller number
+
+  // Build cheerful cart message
+  let message = "Hey there!👋 I'd love your help with this order! %0A%0A";
+
+cart.forEach(item => {
+  message += `🌸 ${item.qty} x ${item.name} (Size: ${item.size}) - KSh ${item.price * item.qty}%0A`;
+  message += `Check it out here: ${item.url}%0A%0A`; // now shows actual link
+});
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  message += `💰 Total: KSh ${total}%0A%0A`;
+  message += `💡 You can also reach out to the seller directly for further assistance with the payment plan: ${sellerContact}%0A%0A`;
+  message += "Thanks a lot! You're awesome🙂";
+
+  // Redirect to WhatsApp for friend
+  window.location.href = `https://wa.me/${friendNumber}?text=${message}`;
+}
+
+function closeFriendModal() {
+  document.getElementById('friendModal').style.display = 'none';
+}
+
+
+function messageSeller() {
+  closeCheckoutModal();
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Seller WhatsApp number (replace with real number)
+  const sellerNumber = "254735469540"; 
+
+  // Cheerful message
+  let message = "Hey Celora! 😊✨ I’m excited to place this order! 💕%0A%0A";
+
+  cart.forEach(item => {
+    message += `🌸 ${item.qty} x ${item.name} (Size: ${item.size}) - KSh ${item.price * item.qty}%0A`;
+    message += `🔗 View Product: ${item.url || item.img}%0A%0A`; // use actual URL if available
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  message += `💰 Total: KSh ${total}%0A%0A`;
+  message += "Please let me know the next steps for payment. Thank you! 😍";
+
+  // Redirect to WhatsApp
+  window.location.href = `https://wa.me/${sellerNumber}?text=${message}`;
+}
 renderCart();
 function addToCart(btn) {
   const productEl = btn.closest('.product-card');
