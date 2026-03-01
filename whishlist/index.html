@@ -319,12 +319,12 @@ loadWishlist();
 document.addEventListener('DOMContentLoaded', () => {
   const spinner = document.getElementById('spinner');
 
-  // Intercept ALL internal links
   document.querySelectorAll('a[href]').forEach(link => {
     if (link.hostname === window.location.hostname) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        spinner.style.display = 'flex';
+
+        if (spinner) spinner.style.display = 'flex';
 
         setTimeout(() => {
           window.location.href = this.href;
@@ -333,12 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-// Hide spinner when page loads (including back button)
-window.addEventListener("pageshow", function () {
-  document.getElementById("spinner").style.display = "none";
-});
-
 </script>
 </body>
 </html>
