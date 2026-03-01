@@ -394,7 +394,7 @@ footer {
 </head>
 
 <body>
-<!-- Spinner Overlay -->
+<!-- Global Spinner -->
 <div id="spinner" style="
   display:none;
   position:fixed;
@@ -532,6 +532,26 @@ function goTo(page) {
     window.location.href = page;
   }, 600);
 }
+// Show spinner on all internal link clicks
+document.addEventListener('DOMContentLoaded', () => {
+  const spinner = document.getElementById('spinner');
+
+  // Select all links
+  document.querySelectorAll('a[href]').forEach(link => {
+    // Only intercept internal links (same origin)
+    if (link.href.startsWith(window.location.origin)) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // prevent instant navigation
+        spinner.style.display = 'flex';
+
+        // Navigate after a short delay
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 400); // 400ms delay
+      });
+    }
+  });
+});
 
 
 // Toggle sidebar and overlay
